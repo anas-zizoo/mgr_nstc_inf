@@ -1,0 +1,1076 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+
+<!-- Mirrored from 192.168.133.254/cisco/lab/ERouting/Chapter01/1.5.2/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Jan 2022 14:15:26 GMT -->
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="index_pliki/filelist.xml">
+<link rel=Edit-Time-Data href="index_pliki/editdata.html">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Podstawowa konfiguracja routera</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Krzysztof Januszewski</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Krzysztof Januszewski</o:LastAuthor>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>71</o:TotalTime>
+  <o:Created>2011-04-07T16:17:00Z</o:Created>
+  <o:LastSaved>2016-03-15T16:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>502</o:Words>
+  <o:Characters>3017</o:Characters>
+  <o:Company>Akademia Morska w Gdyni</o:Company>
+  <o:Lines>25</o:Lines>
+  <o:Paragraphs>7</o:Paragraphs>
+  <o:CharactersWithSpaces>3512</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>75</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normalny;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h3
+	{mso-style-next:Normalny;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:Standardowy;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Tabela - Siatka";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="4098"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=PL style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1 align=center style='text-align:center'>Podstawowa konfiguracja routera</h1>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<h3 align=center style='text-align:center'>Diagram topologii</h3>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-family:Arial'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:647.25pt;
+ height:184.5pt'>
+ <v:imagedata src="index_pliki/image001.jpg" o:title="1"/>
+</v:shape><![endif]--><![if !vml]><img width=863 height=246
+src="index_pliki/image003.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<h3 align=center style='text-align:center'>Tabela adresacji</h3>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Urządzenie<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Interfejs<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Adres IP<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Maska podsieci<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Brama domyślna<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td rowspan=2 style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>R1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Fa0/0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.1.1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>S0/1/1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.4.2<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td rowspan=3 style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>R2<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Fa0/0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.2.1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>S0/1/0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.4.1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>S0/1/1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.5.1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td rowspan=2 style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>R3<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Fa0/0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.3.1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>S0/1/0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.5.2<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>PC1<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>NIC<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.1.10<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.1.1<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>PC2<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>NIC<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.2.10<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.2.1<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>PC3<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>NIC<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.3.10<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>255.255.255.0<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>192.168.3.1<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial'>W tym ćwiczeniu
+laboratoryjnym stworzysz siec podobna do tej z diagramu topologii sieci.
+Wykonaj początkową konfiguracje routerów wymaganą do uzyskania łączności. Użyj
+adresacji, która znajduje się w tabeli do zaadresowania urządzeń w sieci. Kiedy
+zakończysz konfiguracje, sprawdź tablice <span class=SpellE>routingu</span>,
+aby zweryfikować, czy siec działa <span class=GramE>poprawnie.</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<h3 align=center style='text-align:center'>Polecenia IOS</h3>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:1.9pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Polecenie<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:Arial'>Działanie<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER(config)# <span
+  class=SpellE><b style='mso-bidi-font-weight:normal'>interface</b></span><b
+  style='mso-bidi-font-weight:normal'> Serial 0/1/0<o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wejście do trybu
+  konfiguracji interfejsu Serial0/1/0<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER(<span class=SpellE>config</span>-if)# <span
+  class=SpellE><b style='mso-bidi-font-weight:normal'>ip</b></span><b
+  style='mso-bidi-font-weight:normal'> address <i style='mso-bidi-font-style:
+  normal'>A.A.A.A M.M.M.M</i><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Konfiguracja adresu IP i
+  maski<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER(<span class=SpellE>config</span>-if)# <b
+  style='mso-bidi-font-weight:normal'>description <span class=SpellE><i
+  style='mso-bidi-font-style:normal'>opis</i></span><i style='mso-bidi-font-style:
+  normal'><o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Ustawienie opisu łącza (ma
+  znaczenie lokalne)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER(<span class=SpellE>config</span>-if)# <b
+  style='mso-bidi-font-weight:normal'>clock rate <i style='mso-bidi-font-style:
+  normal'>clock<o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Ustawienie taktowania na
+  interfejsie – zegar ustawia się tylko na interfejsie szeregowym DCE, co jest
+  zależne od rodzaju zakończenia kabla dołączonego do interfejsu.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER(<span class=SpellE>config</span>-if)# <b
+  style='mso-bidi-font-weight:normal'>no shutdown<o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Włączenie interfejsu
+  (domyślnie interfejsy routera są wyłączone)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER(<span class=SpellE>config</span>-if)# <b
+  style='mso-bidi-font-weight:normal'>do <span class=SpellE><i
+  style='mso-bidi-font-style:normal'>polecenie</i></span><i style='mso-bidi-font-style:
+  normal'><o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wykonuje <i
+  style='mso-bidi-font-style:normal'>polecenie</i> trybu uprzywilejowanego w
+  trybie konfiguracji interfejsu; po jego wykonaniu router pozostaje w tym trybie.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>show <span class=SpellE>controllers</span>
+  <i style='mso-bidi-font-style:normal'>interfejs<o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informacje
+  sprzętowe o wskazanym interfejsie (w szczególności rodzaj zakończenia
+  dołączonego kabla szeregowego)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show
+  interfaces<o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informacje o
+  wszystkich interfejsach<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>show <span class=SpellE>interface</span> <i
+  style='mso-bidi-font-style:normal'>interfejs<o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span class=SpellE><span style='font-family:Arial'>Wyswietla</span></span><span
+  style='font-family:Arial'> informacje o wskazanym interfejsie<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show <span
+  class=SpellE>ip</span> interface <span class=SpellE><i style='mso-bidi-font-style:
+  normal'>interfejs</i></span><i style='mso-bidi-font-style:normal'><o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informacje o
+  konfiguracji IP wskazanego interfejsu<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show <span
+  class=SpellE>ip</span> interface brief<i style='mso-bidi-font-style:normal'><o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla zastawienie wszystkich
+  interfejsów włączając stan i <span class=SpellE>przypiszny</span> adres IP<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show <span
+  class=SpellE>arp</span><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla tablicę ARP<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>show <span class=SpellE>running-config</span><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla bieżącą
+  konfiguracje urządzenia<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:14'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show
+  running-<span class=SpellE>config</span></b> <span class=SpellE><i
+  style='mso-bidi-font-style:normal'>interfejs</i></span><i style='mso-bidi-font-style:
+  normal'><o:p></o:p></i></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informację o
+  bieżącej <span class=SpellE>konfoguracji</span> wskazanego interfejsu<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:15'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show
+  startup-<span class=SpellE>config</span><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla konfiguracje
+  zapisaną w pamięci NVRAM<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:16'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>show <span class=SpellE>cdp</span><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla ogólne
+  informacje na temat protokołu CDP (<i style='mso-bidi-font-style:normal'>Cisco
+  Discovery <span class=SpellE>Protocol</span>)</i>.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:17'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>show <span class=SpellE>cdp</span> <span
+  class=SpellE>neighbors</span><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informacje o
+  dołączonych bezpośrednio urządzeniach Cisco<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:18'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show <span
+  class=SpellE>cdp</span> entry <span class=SpellE><i style='mso-bidi-font-style:
+  normal'>nazwa</i></span><i style='mso-bidi-font-style:normal'><o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informację o
+  dołączonym bezpośrednio urządzeniu Cisco o nazwie <i style='mso-bidi-font-style:
+  normal'>nazwa</i><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:19'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>show <span
+  class=SpellE>cdp</span> entry *</b><o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informację o wszystkich
+  bezpośrednio dołączonych urządzeniach Cisco.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:20'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <b style='mso-bidi-font-weight:normal'>ping <i
+  style='mso-bidi-font-style:normal'>A.A.A.A</i><o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wysyła komunikat ICMP <span
+  class=SpellE>echo-request</span> do urządzenia o adresie <i style='mso-bidi-font-style:
+  normal'>A.A.A.A</i> <o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:21'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Courier New";
+  mso-ansi-language:EN-US'>ROUTER# <span class=SpellE><b style='mso-bidi-font-weight:
+  normal'>traceroute</b></span><b style='mso-bidi-font-weight:normal'> <i
+  style='mso-bidi-font-style:normal'>A.A.A.A<o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Śledzenie trasy do
+  urządzenia o adresie IP <i style='mso-bidi-font-style:normal'>A.A.A.A.<o:p></o:p></i></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:22'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=FR style='font-family:"Courier New";mso-ansi-language:
+  FR'>ROUTER# <span class=SpellE><b style='mso-bidi-font-weight:normal'>telnet</b></span><b
+  style='mso-bidi-font-weight:normal'> <span class=SpellE><i style='mso-bidi-font-style:
+  normal'>A.A.A.A</i></span><i style='mso-bidi-font-style:normal'><o:p></o:p></i></b></span></p>
+  <p class=MsoNormal><span lang=FR style='font-family:"Courier New";mso-ansi-language:
+  FR'>ROUTER2&gt;<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Nawiązuje sesję telnet z
+  urządzeniem o adresie <i style='mso-bidi-font-style:normal'>A.A.A.A<o:p></o:p></i></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:23'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER2&gt; ^^x<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER#<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>(naciśnięcie Ctrl-Shift-6,
+  zwolnienie i naciśnięcie x) Zawieszenie sesji telnet bez jej zakończenia.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:24'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <span
+  class=SpellE>Enter</span><o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER2&gt;<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wznowienie zawieszonej sesji
+  telnet<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:25'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>resume<o:p></o:p></b></span></p>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER2&gt;<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wznowienie zawieszonej
+  sesji telnet<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:26'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <b
+  style='mso-bidi-font-weight:normal'>show session<o:p></o:p></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Wyświetla informację o
+  zawieszonych sesjach telnet z innymi urządzeniami<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:27;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:"Courier New"'>ROUTER# <span
+  class=SpellE><b style='mso-bidi-font-weight:normal'>disconnect</b></span><b
+  style='mso-bidi-font-weight:normal'> <i style='mso-bidi-font-style:normal'>n<o:p></o:p></i></b></span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-family:Arial'>Rozłączenie zawieszonej
+  sesji telnet o numerze <i style='mso-bidi-font-style:normal'>n<o:p></o:p></i></span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+
+<!-- Mirrored from 192.168.133.254/cisco/lab/ERouting/Chapter01/1.5.2/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Jan 2022 14:15:27 GMT -->
+</html>
